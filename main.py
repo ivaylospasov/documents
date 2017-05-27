@@ -2,13 +2,14 @@
 
 from sys import argv
 from os import path, getcwd, remove, listdir
+import glob
 
 # Convert document to txt file
 # soffice --convert-to txt filename.doc
 
-def list_files():
-    current_dir = getcwd()
-    yield listdir(current_dir)
+def list_doc_files():
+    list_of_all_docs = glob.glob('*.doc*')
+    return list_of_all_docs
 
 '''
 def convert_to_txt(files):
@@ -17,11 +18,8 @@ def convert_to_txt(files):
     pass
 '''
 
-def all_names():
-    for file in list_files():
-        print(file)
-
+def get_names():
+    print(list_doc_files())
 
 if __name__ == '__main__':
-    #main()
-    all_names()
+    get_names()
