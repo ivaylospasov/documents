@@ -4,13 +4,16 @@ from sys import argv
 from os import path, getcwd, remove, listdir
 import glob
 import subprocess
-
-# Convert document to txt file
-# soffice --convert-to txt filename.doc
+import re
 
 def list_doc_files():
     list_of_all_docs = glob.glob('*.doc*')
     return list_of_all_docs
+
+def remove_additional_spaces():
+    text = 'The     quick brown    fox'
+    correct_text = re.sub(' +', ' ', text)
+    return correct_text
 
 def main():
     files = list_doc_files()
@@ -18,4 +21,5 @@ def main():
         subprocess.run(['soffice', '--convert-to', 'txt', file])
 
 if __name__ == '__main__':
-    main()
+    print(remove_additional_spaces())
+    #main()
