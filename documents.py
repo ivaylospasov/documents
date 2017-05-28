@@ -16,9 +16,6 @@ def remove_additional_spaces():
 def main(filename):
     subprocess.run(['soffice', '--convert-to', 'txt', filename])
 
-def print_arguments():
-    print(argv[1])
 
 if __name__ == '__main__':
-    #print(remove_additional_spaces())
     main(argv[1])
