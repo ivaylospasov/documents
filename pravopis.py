@@ -15,15 +15,17 @@ def remove_additional_spaces():
     Use re just for spaces, but not for tabs
     correct_text = re.sub(' +', ' ', text)
     '''
-    text = 'The       quick brown    fox'
+    text = ' The       quick brown    fox'
     correct_text = " ".join(text.split())
     return correct_text
 
 def main():
-    files = list_doc_files()
-    for file in files:
-        subprocess.run(['soffice', '--convert-to', 'txt', file])
+    file = argv[1]
+    subprocess.run(['soffice', '--convert-to', 'txt', file])
+
+def print_arguments():
+    print(argv[1])
 
 if __name__ == '__main__':
-    print(remove_additional_spaces())
-    #main()
+    #print(remove_additional_spaces())
+    main()
