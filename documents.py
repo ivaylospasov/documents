@@ -18,15 +18,20 @@ def read_file(file):
     text_file = get_filename(file)
     with open(text_file, 'r') as f:
         read_data = f.read()
-    return read_data
+        for line in read_data:
+            print(line)
+    #return read_data
 
 def remove_additional_spaces(text):
     text_for_correction = read_file(text)
-    correct_text = " ".join(text_for_correction.split())
-    print(correct_text)
-    return correct_text
+    print(text_for_correction)
+    #correct_text = " ".join(text_for_correction.split())
+    #for line in text_for_correction:
+    #    print(line)
+        #" ".join(text_for_correction.split())
 
 
 if __name__ == '__main__':
     main(argv[1])
-    remove_additional_spaces(argv[1])
+    #remove_additional_spaces(argv[1])
+    read_file(argv[1])
