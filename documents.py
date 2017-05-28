@@ -9,13 +9,15 @@ def list_doc_files():
     return list_of_all_docs
 
 def remove_additional_spaces():
-    text = ' The       quick brown    fox'
+    text = 'Подмяната			 на     батерии продължава '
     correct_text = " ".join(text.split())
+    print(correct_text)
     return correct_text
 
-def main(filename):
-    subprocess.run(['soffice', '--convert-to', 'txt', filename])
+def main(script, *argv):
+    for file in argv:
+        subprocess.run(['soffice', '--convert-to', 'txt', file])
 
 
 if __name__ == '__main__':
-    main(argv[1])
+    main(*argv)
