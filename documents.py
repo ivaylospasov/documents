@@ -11,12 +11,6 @@ def get_filename(filename):
     txt_file = file_name + ".txt"
     return txt_file
 
-def remove_additional_spaces():
-    text = 'Подмяната			 на     батерии продължава '
-    correct_text = " ".join(text.split())
-    print(correct_text)
-    return correct_text
-
 def main(file_name):
     subprocess.run(['soffice', '--convert-to', 'txt', file_name])
 
@@ -26,7 +20,13 @@ def read_file(file):
         read_data = f.read()
     return read_data
 
+def remove_additional_spaces(text):
+    text = read_file(text)
+    correct_text = " ".join(text.split())
+    print(correct_text)
+    return correct_text
+
 
 if __name__ == '__main__':
     main(argv[1])
-    print(read_file(argv[1]))
+    remove_additional_spaces(argv[1])
