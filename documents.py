@@ -25,10 +25,6 @@ def remove_additional_spaces(text):
     for line in text_for_correction:
         line = " ".join(line.split())
         print(line)
-    #correct_text = " ".join(text_for_correction.split())
-    #for line in text_for_correction:
-    #    print(line)
-        #" ".join(text_for_correction.split())
 
 
 if __name__ == '__main__':
