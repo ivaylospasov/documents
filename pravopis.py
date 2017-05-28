@@ -19,13 +19,12 @@ def remove_additional_spaces():
     correct_text = " ".join(text.split())
     return correct_text
 
-def main():
-    file = argv[1]
-    subprocess.run(['soffice', '--convert-to', 'txt', file])
+def main(filename):
+    subprocess.run(['soffice', '--convert-to', 'txt', filename])
 
 def print_arguments():
     print(argv[1])
 
 if __name__ == '__main__':
     #print(remove_additional_spaces())
-    main()
+    main(argv[1])
