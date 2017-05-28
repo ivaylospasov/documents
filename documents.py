@@ -21,8 +21,8 @@ def read_file(file):
     return read_data
 
 def remove_additional_spaces(text):
-    text = read_file(text)
-    correct_text = " ".join(text.split())
+    text_for_correction = read_file(text)
+    correct_text = " ".join(text_for_correction.split())
     print(correct_text)
     return correct_text
 
