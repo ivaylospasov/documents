@@ -15,7 +15,7 @@ def remove_additional_spaces():
     Use re just for spaces, but not for tabs
     correct_text = re.sub(' +', ' ', text)
     '''
-    text = 'The         quick brown    fox'
+    text = 'The       quick brown    fox'
     correct_text = " ".join(text.split())
     return correct_text
 
