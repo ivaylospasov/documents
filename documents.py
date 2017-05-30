@@ -18,7 +18,6 @@ def convert_to_txt(file):
 def read_and_write_file(file):
     with open(file, 'r') as rf:
         txt_file_ready = get_filename(file) + '_ready.' + txt_extension
-        print(txt_file_ready)
         with open(txt_file_ready, 'w') as wf:
             for line in rf:
                 line = " ".join(line.split())
