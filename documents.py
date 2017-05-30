@@ -3,7 +3,6 @@
 from os import path, remove
 from sys import argv
 import subprocess
-import glob
 
 def get_filename(filename):
     file_name, file_extension = path.splitext(filename)
