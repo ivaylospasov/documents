@@ -26,19 +26,19 @@ def remove_additional_spaces(text):
         line = " ".join(line.split())
         print(line)
 
-def read_and_write_file(file):
-    with open(file, 'r+', newline='\n') as f:
-        f_content = f.readlines()
-        #print(f_content)
-        for line in f_content:
-            line = " ".join(line.split())
-            print(line)
-            #f_content = f.readline()
+# def read_and_write_file(file):
+#     with open(file, 'r+', newline='\n') as f:
+#         f_content = f.readlines()
+#         #print(f_content)
+#         for line in f_content:
+#             line = " ".join(line.split())
+#             print(line)
+#             #f_content = f.readline()
 
 
 if __name__ == '__main__':
     get_filename(argv[1])
     convert_to_txt(argv[1])
-    #remove_additional_spaces(argv[1])
-    #read_file(argv[1])
-    read_and_write_file(txt_file)
+    remove_additional_spaces(argv[1])
+    read_file(argv[1])
+    #read_and_write_file(txt_file)
