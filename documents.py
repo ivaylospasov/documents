@@ -11,7 +11,7 @@ def get_filename(filename):
     txt_file = file_name + ".txt"
     return txt_file
 
-def main(file_name):
+def convert_to_txt(file_name):
     subprocess.run(['soffice', '--convert-to', 'txt', file_name])
 
 def read_file(file):
@@ -28,6 +28,6 @@ def remove_additional_spaces(text):
 
 
 if __name__ == '__main__':
-    main(argv[1])
+    convert_to_txt(argv[1])
     remove_additional_spaces(argv[1])
     #read_file(argv[1])
