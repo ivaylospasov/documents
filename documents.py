@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from os import path, renames
+from os import path, remove
 from sys import argv
 import subprocess
 import glob
@@ -23,6 +23,10 @@ def read_and_write_file(file):
             for line in rf:
                 line = " ".join(line.split())
                 wf.write(line + '\n')
+        try:
+            remove(file)
+        except OSError:
+            pass
 
 
 if __name__ == '__main__':
