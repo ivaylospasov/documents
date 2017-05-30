@@ -5,17 +5,18 @@ from sys import argv
 import subprocess
 import glob
 
-
 def get_filename(filename):
     file_name, file_extension = path.splitext(filename)
     return file_name
 
+txt_extension = 'txt'
+txt_file = get_filename(argv[1]) + '.' + txt_extension
+
 def convert_to_txt(file):
-    subprocess.run(['soffice', '--convert-to', 'txt', file])
+    subprocess.run(['soffice', '--convert-to', txt_extension, file])
 
 def read_file(file):
-    text_file = get_filename(file) + '.txt'
-    with open(text_file, 'r') as f:
+    with open(txt_file, 'r') as f:
         read_data = f.readlines()
     return read_data
 
@@ -25,9 +26,20 @@ def remove_additional_spaces(text):
         line = " ".join(line.split())
         print(line)
 
+# def read_and_write_file(file):
+#     with open(file, 'r') as f:
+#         f_content = f.readlines()
+#         print(f_content)
+#         with open('new.txt', 'w') as f_new:
+#             for line in f_content:
+#                 corrected_lines = " ".join(line.split())
+#                 f_new.writelines(corrected_lines)
+
+
 
 if __name__ == '__main__':
     get_filename(argv[1])
     convert_to_txt(argv[1])
     remove_additional_spaces(argv[1])
-    #read_file(argv[1])
+    read_file(argv[1])
+    #read_and_write_file(txt_file)
