@@ -4,6 +4,7 @@ from os import path, remove
 from sys import argv
 import subprocess
 
+
 def get_filename(filename):
     file_name, file_extension = path.splitext(filename)
     return file_name
