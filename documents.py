@@ -28,8 +28,8 @@ def read_and_write_file(file):
             pass
 
 def correct_space_and_sign(file):
-    signs_wrong = [' ,', ' .', ' :']
-    signs_right = [', ', '. ', ': ']
+    signs_wrong = [' ,', ' .', ' :', ' ;', '“', '„', '”']
+    signs_right = [', ', '. ', ': ', '; ', '"', '"', '"']
     with open(file, 'r') as rf:
         with open('test.txt', 'w') as wf:
                 for line in rf:
