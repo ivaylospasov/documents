@@ -4,6 +4,12 @@ from os import path, remove
 from sys import argv
 import subprocess
 
+signs_wrong = [' ,', ' .', ' :', ' ;', '“', '„', '”', ' й ', '¤', \
+'по - ', 'по- ', 'по -', \
+'най - ', 'най- ', 'най -']
+signs_right = [', ', '. ', ': ', '; ', '"', '"', '"', ' ѝ ', '', \
+'по-', 'по-', 'по-', \
+'най-', 'най-', 'най-']
 
 def get_filename(filename):
     file_name, file_extension = path.splitext(filename)
@@ -28,18 +34,13 @@ def read_and_write_file(file):
             pass
 
 def correct_space_and_sign(file):
-    signs_wrong = [' ,', ' .', ' :', ' ;', '“', '„', '”', ' й ', '¤', \
-    'по - ', 'по- ', 'по -', \
-    'най - ', 'най- ', 'най -']
-    signs_right = [', ', '. ', ': ', '; ', '"', '"', '"', ' ѝ ', '', \
-    'по-', 'по-', 'по-', \
-    'най-', 'най-', 'най-']
+
     with open(file, 'r') as rf:
         with open('corrected_signs.txt', 'w') as wf:
-                for line in rf:
-                    for wrong, right in zip(signs_wrong, signs_right):
-                        line = line.replace(wrong, right)
-                    wf.write(line)
+            for line in rf:
+                for wrong, right in zip(signs_wrong, signs_right):
+                    line = line.replace(wrong, right)
+                wf.write(line)
 
 
 if __name__ == '__main__':
