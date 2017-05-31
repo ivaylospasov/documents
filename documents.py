@@ -28,10 +28,10 @@ def read_and_write_file(file):
             pass
 
 def correct_space_and_sign(file):
-    signs_wrong = [' ,', ' .', ' :', ' ;', '“', '„', '”']
-    signs_right = [', ', '. ', ': ', '; ', '"', '"', '"']
+    signs_wrong = [' ,', ' .', ' :', ' ;', '“', '„', '”', '¤']
+    signs_right = [', ', '. ', ': ', '; ', '"', '"', '"', '']
     with open(file, 'r') as rf:
-        with open('test.txt', 'w') as wf:
+        with open('corrected_signs.txt', 'w') as wf:
                 for line in rf:
                     for wrong, right in zip(signs_wrong, signs_right):
                         line = line.replace(wrong, right)
@@ -41,6 +41,7 @@ def correct_space_and_sign(file):
 if __name__ == '__main__':
     get_filename(argv[1])
     convert_to_txt(argv[1])
-    correct_space_and_sign(txt_file)
-    #read_and_write_file(txt_file)
+    read_and_write_file(txt_file)
+    correct_space_and_sign(txt_file_ready)
+    read_and_write_file('corrected_signs.txt')
     #test('Hello , everyone. Say , "Hello" , to me! Hello')
