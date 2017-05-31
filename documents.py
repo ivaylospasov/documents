@@ -27,15 +27,20 @@ def read_and_write_file(file):
         except OSError:
             pass
 
-# def replace_space_comma(file):
-#     with open(file, 'r') as rf:
-#         with open('test.txt', 'w') as wf:
-#             for line in rf:
-#                 move_space_after_comma = line.replace(" ,",", ")
-#                 wf.write(move_space_after_comma)
+def replace_space_comma(file):
+    signs_wrong = [' ,', ' .', ' :']
+    signs_right = [', ', '. ', ': ']
+    with open(file, 'r') as rf:
+        with open('test.txt', 'w') as wf:
+                for line in rf:
+                    for wrong, right in zip(signs_wrong, signs_right):
+                        line = line.replace(wrong, right)
+                    wf.write(line)
+
 
 if __name__ == '__main__':
     get_filename(argv[1])
     convert_to_txt(argv[1])
-    #replace_space_comma(txt_file)
-    read_and_write_file(txt_file)
+    replace_space_comma(txt_file)
+    #read_and_write_file(txt_file)
+    #test('Hello , everyone. Say , "Hello" , to me! Hello')
