@@ -27,7 +27,7 @@ def read_and_write_file(file):
         except OSError:
             pass
 
-def replace_space_comma(file):
+def correct_space_and_sign(file):
     signs_wrong = [' ,', ' .', ' :']
     signs_right = [', ', '. ', ': ']
     with open(file, 'r') as rf:
@@ -41,6 +41,6 @@ def replace_space_comma(file):
 if __name__ == '__main__':
     get_filename(argv[1])
     convert_to_txt(argv[1])
-    replace_space_comma(txt_file)
+    correct_space_and_sign(txt_file)
     #read_and_write_file(txt_file)
     #test('Hello , everyone. Say , "Hello" , to me! Hello')
