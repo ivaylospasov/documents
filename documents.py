@@ -44,4 +44,3 @@ if __name__ == '__main__':
     read_and_write_file(txt_file)
     correct_space_and_sign(txt_file_ready)
     read_and_write_file('corrected_signs.txt')
-    #test('Hello , everyone. Say , "Hello" , to me! Hello')
