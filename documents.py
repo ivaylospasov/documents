@@ -28,11 +28,6 @@ corrections = {
 "най-": ["най - ", "най- ", "най -"]
 }
 
-def loop_corrections(dict):
-    for key, value in dict.items():
-        for wrong_word in value:
-            print(wrong_word + ' се замества с ' + key)
-
 def get_filename(filename):
     file_name, file_extension = path.splitext(filename)
     return file_name
@@ -68,6 +63,10 @@ def correct_space_and_sign(file):
                     line = line.replace(wrong, right)
                 wf.write(line)
 
+def loop_corrections(dict):
+    for key, value in dict.items():
+        for wrong_word in value:
+            print(wrong_word + ' се замества с ' + key)
 
 if __name__ == '__main__':
     get_filename(argv[1])
