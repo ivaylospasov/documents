@@ -7,43 +7,23 @@ import json
 from pprint import pprint
 
 
-signs_wrong = [' ,', ' .', ' :', ' ;', '“', '„', '”', ' й ', '¤', \
-'по - ', 'по- ', 'по -', \
-'най - ', 'най- ', 'най -', \
-' бул. ', ' БУЛ. ', ' ул. ', ' УЛ. ', ' ЕС', ' пл. ', \
-' хил.', ' млн.', ' лв.']
-signs_right = [', ', '. ', ': ', '; ', '"', '"', '"', ' ѝ ', '', \
-'по-', 'по-', 'по-', \
-'най-', 'най-', 'най-', \
-' булевард ', ' булевард ', ' улица ', ' улица ', ' Европейския съюз', ' площад ' \
-' хиляди', ' милиона', ' лева']
-
-corrections = {
-", ": [" ,"],
-". ": [" ."],
-": ": [" :"],
-"\"": ["“", "„", "”"],
-" ѝ ": [" й "],
-"по-": ["по - ", "по- ", "по -"],
-"най-": ["най - ", "най- ", "най -"],
-" площад ":[" пл. ", " ПЛ. "]
-}
-
 def get_filename(filename):
     file_name, file_extension = path.splitext(filename)
     return file_name
 
 scripts_path = path.dirname(argv[0])
 corrections_json = scripts_path + '/' + 'corrections.json'
-txt_extension = 'txt'
-txt_file = get_filename(argv[1]) + '.' + txt_extension
-txt_file_ready = get_filename(argv[1]) + '_ready.' + txt_extension
+txt_ext = 'txt'
+txt_file = get_filename(argv[1]) + '.' + txt_ext
+txt_file_ready = get_filename(argv[1]) + '_ready' + '.' + txt_ext
 
-with open(corrections_json) as data_file:
-    data = json.load(data_file)
+def corrections_data():
+    with open(corrections_json) as data_file:
+        data = json.load(data_file)
+        return data
 
 def convert_to_txt(file):
-    subprocess.run(['soffice', '--convert-to', txt_extension, file])
+    subprocess.run(['soffice', '--convert-to', 'txt', file])
 
 def read_and_write_file(file):
     with open(file, 'r') as rf:
@@ -56,13 +36,6 @@ def read_and_write_file(file):
         except OSError:
             pass
 
-# def correct_space_and_sign(file):
-#     with open(file, 'r') as rf:
-#         with open('corrected_signs.txt', 'w') as wf:
-#             for line in rf:
-#                 for wrong, right in zip(signs_wrong, signs_right):
-#                     line = line.replace(wrong, right)
-#                 wf.write(line)
 
 def loop_corrections(file, dict):
     print(file)
@@ -80,5 +53,5 @@ if __name__ == '__main__':
     convert_to_txt(argv[1])
     read_and_write_file(txt_file)
     # correct_space_and_sign(txt_file_ready)
-    loop_corrections(txt_file_ready, corrections)
+    loop_corrections(txt_file_ready, corrections_data())
     read_and_write_file('corrected_signs.txt')
