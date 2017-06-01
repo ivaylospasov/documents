@@ -47,9 +47,7 @@ def loop_corrections(file, dict):
 
 
 if __name__ == '__main__':
-    # get_filename(argv[1])
     convert_to_txt(argv[1])
     read_and_write_file(txt_file)
-    # correct_space_and_sign(txt_file_ready)
     loop_corrections(txt_file_ready, corrections_data())
     read_and_write_file('corrected_signs.txt')
