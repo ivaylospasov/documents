@@ -56,23 +56,29 @@ def read_and_write_file(file):
         except OSError:
             pass
 
-def correct_space_and_sign(file):
+# def correct_space_and_sign(file):
+#     with open(file, 'r') as rf:
+#         with open('corrected_signs.txt', 'w') as wf:
+#             for line in rf:
+#                 for wrong, right in zip(signs_wrong, signs_right):
+#                     line = line.replace(wrong, right)
+#                 wf.write(line)
+
+def loop_corrections(file, dict):
+    print(file)
     with open(file, 'r') as rf:
         with open('corrected_signs.txt', 'w') as wf:
             for line in rf:
-                for wrong, right in zip(signs_wrong, signs_right):
-                    line = line.replace(wrong, right)
+                for key, wrong_words in dict.items():
+                    for wrong_word in wrong_words:
+                        line = line.replace(wrong_word, key)
                 wf.write(line)
 
-def loop_corrections(dict):
-    for key, value in dict.items():
-        for wrong_word in value:
-            print(wrong_word + ' се замества с ' + key)
 
 if __name__ == '__main__':
-    get_filename(argv[1])
+    # get_filename(argv[1])
     convert_to_txt(argv[1])
     read_and_write_file(txt_file)
-    correct_space_and_sign(txt_file_ready)
+    # correct_space_and_sign(txt_file_ready)
+    loop_corrections(txt_file_ready, corrections)
     read_and_write_file('corrected_signs.txt')
-    loop_corrections(corrections)
