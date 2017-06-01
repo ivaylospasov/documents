@@ -35,7 +35,6 @@ def read_and_write_file(file):
         except OSError:
             pass
 
-
 def loop_corrections(file, dict):
     with open(file, 'r') as rf:
         with open('corrected_signs.txt', 'w') as wf:
