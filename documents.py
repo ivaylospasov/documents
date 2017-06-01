@@ -4,7 +4,6 @@ from os import path, remove
 from sys import argv
 import subprocess
 import json
-from pprint import pprint
 
 
 def get_filename(filename):
@@ -38,7 +37,6 @@ def read_and_write_file(file):
 
 
 def loop_corrections(file, dict):
-    print(file)
     with open(file, 'r') as rf:
         with open('corrected_signs.txt', 'w') as wf:
             for line in rf:
