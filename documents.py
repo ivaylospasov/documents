@@ -24,14 +24,12 @@ def get_filename(filename):
 
 scripts_path = path.dirname(argv[0])
 corrections_json = scripts_path + '/' + 'corrections.json'
-print(corrections_json)
 txt_extension = 'txt'
 txt_file = get_filename(argv[1]) + '.' + txt_extension
 txt_file_ready = get_filename(argv[1]) + '_ready.' + txt_extension
 
 with open(corrections_json) as data_file:
     data = json.load(data_file)
-    return data
 
 def convert_to_txt(file):
     subprocess.run(['soffice', '--convert-to', txt_extension, file])
