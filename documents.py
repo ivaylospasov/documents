@@ -3,6 +3,7 @@
 from os import path, remove
 from sys import argv
 import subprocess
+import json
 
 signs_wrong = [' ,', ' .', ' :', ' ;', '“', '„', '”', ' й ', '¤', \
 'по - ', 'по- ', 'по -', \
