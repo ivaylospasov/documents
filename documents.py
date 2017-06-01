@@ -18,6 +18,21 @@ signs_right = [', ', '. ', ': ', '; ', '"', '"', '"', ' ѝ ', '', \
 ' булевард ', ' булевард ', ' улица ', ' улица ', ' Европейския съюз', \
 ' хиляди', ' милиона', ' лева']
 
+corrections = {
+", ": [" ,"],
+". ": [" ."],
+": ": [" :"],
+"\"": ["“", "„", "”"],
+" ѝ ": [" й "],
+"по-": ["по - ", "по- ", "по -"],
+"най-": ["най - ", "най- ", "най -"]
+}
+
+def loop_corrections(dict):
+    for key, value in dict.items():
+        for wrong_word in value:
+            print(wrong_word + ' се замества с ' + key)
+
 def get_filename(filename):
     file_name, file_extension = path.splitext(filename)
     return file_name
@@ -60,3 +75,4 @@ if __name__ == '__main__':
     read_and_write_file(txt_file)
     correct_space_and_sign(txt_file_ready)
     read_and_write_file('corrected_signs.txt')
+    loop_corrections(corrections)
