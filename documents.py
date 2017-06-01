@@ -4,6 +4,8 @@ from os import path, remove
 from sys import argv
 import subprocess
 import json
+from pprint import pprint
+
 
 signs_wrong = [' ,', ' .', ' :', ' ;', '“', '„', '”', ' й ', '¤', \
 'по - ', 'по- ', 'по -', \
@@ -20,9 +22,16 @@ def get_filename(filename):
     file_name, file_extension = path.splitext(filename)
     return file_name
 
+scripts_path = path.dirname(argv[0])
+corrections_json = scripts_path + '/' + 'corrections.json'
+print(corrections_json)
 txt_extension = 'txt'
 txt_file = get_filename(argv[1]) + '.' + txt_extension
 txt_file_ready = get_filename(argv[1]) + '_ready.' + txt_extension
+
+with open(corrections_json) as data_file:
+    data = json.load(data_file)
+    return data
 
 def convert_to_txt(file):
     subprocess.run(['soffice', '--convert-to', txt_extension, file])
@@ -39,7 +48,6 @@ def read_and_write_file(file):
             pass
 
 def correct_space_and_sign(file):
-
     with open(file, 'r') as rf:
         with open('corrected_signs.txt', 'w') as wf:
             for line in rf:
