@@ -24,7 +24,7 @@ def corrections_data():
 def convert_to_txt(file):
     subprocess.run(['soffice', '--convert-to', 'txt', file])
 
-def read_and_write_file(file):
+def remove_additional_spaces(file):
     with open(file, 'r') as rf:
         with open(txt_file_ready, 'w') as wf:
             for line in rf:
@@ -47,6 +47,6 @@ def loop_corrections(file, dict):
 
 if __name__ == '__main__':
     convert_to_txt(argv[1])
-    read_and_write_file(txt_file)
+    remove_additional_spaces(txt_file)
     loop_corrections(txt_file_ready, corrections_data())
-    read_and_write_file('corrected_signs.txt')
+    remove_additional_spaces('corrected_signs.txt')
