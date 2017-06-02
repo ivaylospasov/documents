@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from os import path, remove
+from os import path, remove, linesep
 from sys import argv
 import subprocess
 import json
@@ -39,10 +39,11 @@ def loop_corrections(file, dict):
     with open(file, 'r') as rf:
         with open('corrected_signs.txt', 'w') as wf:
             for line in rf:
-                for key, wrong_words in dict.items():
-                    for wrong_word in wrong_words:
-                        line = line.replace(wrong_word, key)
-                wf.write(line)
+                if line.strip():
+                    for key, wrong_words in dict.items():
+                        for wrong_word in wrong_words:
+                            line = line.replace(wrong_word, key)
+                    wf.write(line)
 
 
 if __name__ == '__main__':
