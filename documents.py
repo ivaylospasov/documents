@@ -28,8 +28,9 @@ def remove_additional_spaces(file):
     with open(file, 'r') as rf:
         with open(txt_file_ready, 'w') as wf:
             for line in rf:
-                line = " ".join(line.split())
-                wf.write(line + '\n\n')
+                if line.strip():
+                    line = " ".join(line.split())
+                    wf.write(line + '\n\n')
         try:
             remove(file)
         except OSError:
