@@ -16,8 +16,9 @@ def get_filename(filename):
     return file_name
 
 
-scripts_path = path.dirname(argv[0])
-corrections_json = scripts_path + '/' + 'corrections.json'
+scripts_path = path.dirname(__file__)
+script_filename = path.join(scripts_path, 'documents.py')
+corrections_json = path.join(scripts_path, 'corrections.json')
 txt_ext = 'txt'
 txt_file = get_filename(argv[1]) + '.' + txt_ext
 txt_file_ready = get_filename(argv[1]) + '_ready' + '.' + txt_ext
@@ -58,6 +59,7 @@ def loop_corrections(file, dict):
 
 
 def main():
+    print(scripts_path)
     convert_to_txt(argv[1])
     remove_additional_spaces(txt_file)
     loop_corrections(txt_file_ready, corrections_data())
