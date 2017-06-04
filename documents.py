@@ -8,7 +8,7 @@ from time import process_time
 
 
 start = process_time()
-end = process_time()
+timed = process_time()
 
 
 def get_filename(filename):
@@ -59,12 +59,11 @@ def loop_corrections(file, dict):
 
 
 def main():
-    print(scripts_path)
     convert_to_txt(argv[1])
     remove_additional_spaces(txt_file)
     loop_corrections(txt_file_ready, corrections_data())
     remove_additional_spaces('corrected_signs.txt')
-    print(end - start)
+    print(timed)
 
 
 if __name__ == '__main__':
