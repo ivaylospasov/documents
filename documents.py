@@ -4,6 +4,11 @@ from os import path, remove
 from sys import argv
 import subprocess
 import json
+import time
+
+
+start = time.process_time()
+end = time.process_time()
 
 
 def get_filename(filename):
@@ -52,8 +57,13 @@ def loop_corrections(file, dict):
                     wf.write(line)
 
 
-if __name__ == '__main__':
+def main():
     convert_to_txt(argv[1])
     remove_additional_spaces(txt_file)
     loop_corrections(txt_file_ready, corrections_data())
     remove_additional_spaces('corrected_signs.txt')
+    print(end - start)
+
+
+if __name__ == '__main__':
+    main()
