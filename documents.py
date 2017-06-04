@@ -4,11 +4,11 @@ from os import path, remove
 from sys import argv
 import subprocess
 import json
-import time
+from time import process_time
 
 
-start = time.process_time()
-end = time.process_time()
+start = process_time()
+end = process_time()
 
 
 def get_filename(filename):
