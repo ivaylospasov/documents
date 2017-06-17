@@ -44,10 +44,10 @@ def remove_symbols(file):
                 elif line.startswith("{M}"):
                     line = ""
                 wf.write(line + '\n\n')
-    try:
-        remove(file)
-    except OSError:
-            pass
+        try:
+            remove(file)
+        except OSError:
+                pass
 
 
 def remove_additional_spaces(file):
