@@ -19,6 +19,7 @@ def get_filename(filename):
 scripts_path = path.dirname(__file__)
 script_filename = path.join(scripts_path, 'documents.py')
 corrections_json = path.join(scripts_path, 'corrections.json')
+remove_symbols = path.join(scripts_path, 'remove_symbols.sh')
 txt_ext = 'txt'
 txt_file = get_filename(argv[1]) + '.' + txt_ext
 txt_file_ready = get_filename(argv[1]) + '_ready' + '.' + txt_ext
@@ -32,6 +33,17 @@ def corrections_data():
 
 def convert_to_txt(file):
     subprocess.run(['soffice', '--convert-to', 'txt', file])
+
+
+def remove_symbols(file):
+    with open(file, 'r') as rf:
+        with open("new.txt", 'w') as wf:
+            for line in rf:
+                if line.startswith("¤W"):
+                    line = ""
+                elif line.startswith("{M}"):
+                    line = ""
+                wf.write(line + '\n\n')
 
 
 def remove_additional_spaces(file):
@@ -60,7 +72,8 @@ def loop_corrections(file, dict):
 
 def main():
     convert_to_txt(argv[1])
-    remove_additional_spaces(txt_file)
+    remove_symbols(txt_file)
+    remove_additional_spaces("new.txt")
     loop_corrections(txt_file_ready, corrections_data())
     remove_additional_spaces('corrected_signs.txt')
     print(timed)
