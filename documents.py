@@ -80,7 +80,6 @@ def main():
     remove_additional_spaces("new.txt")
     loop_corrections(txt_file_ready, corrections_data())
     remove_additional_spaces('corrected_signs.txt')
-    print(timed)
 
 
 if __name__ == '__main__':
