@@ -19,7 +19,6 @@ def get_filename(filename):
 scripts_path = path.dirname(__file__)
 script_filename = path.join(scripts_path, 'documents.py')
 corrections_json = path.join(scripts_path, 'corrections.json')
-remove_symbols = path.join(scripts_path, 'remove_symbols.sh')
 txt_ext = 'txt'
 txt_file = get_filename(argv[1]) + '.' + txt_ext
 txt_file_ready = get_filename(argv[1]) + '_ready' + '.' + txt_ext
