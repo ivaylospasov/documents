@@ -5,11 +5,10 @@
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
   <body>
-    <form id="form-correct" action="index.html" method="post">
-      <textarea name="text-raw" rows="8" cols="80">
-             Hello World!
-    </textarea>
-    <input type="submit" value="Fix">
+    <form id="form-correct" action="index.html" method="post" style="margin: 2rem"  >
+      <label for="input-raw">The place to correct your text</label>
+      <textarea id="input-raw" name="input-raw" style="width: 90%; display:block; margin-bottom: 2rem;" rows="8" cols="80"></textarea>
+      <input type="submit" value="Fix" style="width: 90%; display:block; font-size: 22px; background-color: #ffd617; border-color: #ffd617; color: #000; border: 2px solid transparent; padding: 1rem">
     </form>
   </body>
 </html>
